@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="clock2.png">
+    <title>Exam timers</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Modak&display=swap');
+        @media screen and (max-width: 500px){
+            .timer{
+                flex: 1;
+            }
+        }
+        
+        html, body{
+            background-color: #191919;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .timer{
+            width: 20%;
+            min-height: 35%; 
+            margin: 1.5% 2.5% 1.5% 2.5%;
+            padding-bottom: 2%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+            min-width: 200px;
+            background-color: #6E6E6E; 
+            font-family: "Cherry Bomb One", system-ui;
+            font-weight: 100;
+            font-style: normal; 
+            font-size: 2.25rem;
+            color: white;
+            text-align: center;
+        }
+        .hsc{
+            background-color: red;
+        }
+        p{
+            margin: 1rem;
+        }
+        a{
+            color: rgb(62, 166, 255);
+        }
+        .subject{
+            height: 40%;
+        }
+        .date{
+            height: 30%;
+        }
+        .time{
+            height: 20%;
+        }
+        .study{
+            height: 10%;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="height: 100%; width: 100%; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center;">
+        <div class="timer" style="flex: 1;">
+            <div class="subject"><p>Business Studies</p></div>
+            <div class="date"><p>24/3/2025</p></div>
+            <div class="time" id="timer1" style="margin-bottom: 2%;"></div>
+            <div class="study"><a href="https://drive.google.com/drive/folders/1_ng8wTWIdAME_Skf4_A_q5xea9lfM42F">Study</a></div>
+        </div>
+        <div class="timer">
+            <div class="subject"><p>Math Advanced</p></div>
+            <div class="date"><p>27/3/2025</p></div>
+            <div class="time" id="timer2"></div>
+            <div class="study"><a href="https://drive.google.com/drive/folders/1XdESm6ZRb2qWdb94zdQ0O1zCkUbAtIlm">Study</a></div>
+        </div>
+        <div class="timer">
+            <div class="subject"><p>Math extension</p></div>
+            <div class="date"><p>3/4/2025</p></div>
+            <div class="time" id="timer3"></div>
+            <div class="study"><a href="https://drive.google.com/drive/folders/1IFr-1KwNL-flvHo6KnqyQVIulwWZx41z">Study</a></div>
+        </div>
+        <div class="timer">
+            <div class="subject"><p>English</p></div>
+            <div class="date"><p>30/4/2025</p></div>
+            <div class="time" id="timer4"></div>
+            <div class="study"><a href="https://drive.google.com/drive/folders/1JXLZx7dDWC4HFgD0vVjXaMPC9ht4ZI0N">Study</a></div>
+        </div>
+        <div class="timer" style="flex: 1;">
+            <div class="subject"><p>Enterprise Computing</p></div>
+            <div class="date"><p>2/5/2025</p></div>
+            <div class="time" id="timer5"></div>
+            <div class="study"><a href="https://drive.google.com/drive/folders/1pS3iWdTMNQ0IaqhuBvFg4D2L0fAz1Da6">Study</a></div>
+        </div>
+        <div class="timer" style="flex: 1;">
+            <div class="subject"><p>Visual Design</p></div>
+            <div class="date"><p>??/4/2025</p></div>
+            <div class="time" id="timer6"></div>
+            <div class="study"><a href="https://drive.google.com/drive/folders/1Oj25t_sbJboydKWkAPImjCXExKUfVgDC">Study</a></div>
+        </div>
+        <div class="timer">
+            <div class="subject"><p>Physics</p></div>
+            <div class="date"><p>??/??/2025</p></div>
+            <div class="time" id="timer7"></div>
+            <div class="study"><a href="https://drive.google.com/drive/folders/1gqFdo7OzuSp2bupEhz8HUfTJ1IJz8b5P">Study</a></div>
+        </div>
+        <div class="timer hsc">
+            <div class="subject"><p>HSC</p></div>
+            <div class="date"><p>15/10/2026</p></div>
+            <div class="time" id="timer8"></div>
+            <div class="study"><a href="https://educationstandards.nsw.edu.au/wps/portal/nesa/resource-finder/hsc-exam-papers/2024">Study</a></div>
+        </div>
+    </div>
+
+    <script>
+        // Function to start both timers
+        function startTimers() {
+            let date1 = new Date('March 24, 2025 00:00:00');  // BST
+            let date2 = new Date('March 27, 2025 00:00:00');  // MTH ADV
+            let date3 = new Date('April 3, 2025 00:00:00');  // MTH EXT
+            let date4 = new Date('April 30, 2025 00:00:00');  // ENG
+            let date5 = new Date('May 2, 2025 00:00:00');  // ENC
+            let date6 = new Date('March 15, 2025 00:00:00');  // VD 
+            let date7 = new Date('October 15, 2026 00:00:00');  // PHYS 
+            let date8 = new Date('October 15, 2026 00:00:00');  // HSC
+
+            // Call functions to start each timer
+            createTimer(date1, 'timer1');
+            createTimer(date2, 'timer2');
+            createTimer(date3, 'timer3');
+            createTimer(date4, 'timer4');
+            createTimer(date5, 'timer5');
+            createTimer(date6, 'timer6');
+            createTimer(date7, 'timer7');
+            createTimer(date8, 'timer8');
+        }
+
+        // Function to create a timer
+        function createTimer(targetDate, elementId) {
+            setInterval(function() {
+                let currentTime = new Date();
+                let timeLeft = targetDate - currentTime;
+
+                if (timeLeft <= 0) {
+                    document.getElementById(elementId).innerHTML = "Time's up!";
+                } else {
+                    let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                    document.getElementById(elementId).innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                }
+            }, 1000);
+        }
+
+        // Automatically start timers when the page loads
+        window.onload = startTimers;
+    </script>
+
+</body>
+</html>
